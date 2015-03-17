@@ -1,4 +1,5 @@
 {
+  "name": "chervand/yii-bootstrap-daterangepicker",
   "require": {
     "yiisoft/yii": ">=1.1.16",
     "fxp/composer-asset-plugin": "1.0.0",
