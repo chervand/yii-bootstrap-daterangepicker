@@ -5,6 +5,7 @@ class BootstrapDateRangePicker extends CInputWidget
 	const MOMENT_PACKAGE_ID = 'moment';
 	const BDRP_PACKAGE_ID = 'bootstrap-daterangepicker';
 
+	public $callback;
 	public $options = [];
 	public $selector;
 	public $theme = 'bs3';
@@ -45,6 +46,7 @@ class BootstrapDateRangePicker extends CInputWidget
 	protected function registerBootstrapDateRangePicker()
 	{
 		$clientScript = Yii::app()->getClientScript();
+		$callback = CJavaScript::encode($this->callback);
 		$selector = CJavaScript::encode($this->selector);
 		$options = CJavaScript::encode($this->options);
 		$assetsPath = Yii::getPathOfAlias('vendor.bower-asset.' . self::BDRP_PACKAGE_ID);
@@ -60,7 +62,7 @@ class BootstrapDateRangePicker extends CInputWidget
 			->registerPackage(self::BDRP_PACKAGE_ID)
 			->registerScript(
 				$this->id,
-				'jQuery(' . $selector . ').daterangepicker(' . $options . ');',
+				'jQuery(' . $selector . ').daterangepicker(' . $options . ',' . $callback . ');',
 				CClientScript::POS_READY
 			);
 	}
