@@ -8,7 +8,6 @@ class BootstrapDateRangePicker extends CInputWidget
 	public $callback;
 	public $options = [];
 	public $selector;
-	public $theme = 'bs3';
 
 	public function init()
 	{
@@ -45,7 +44,9 @@ class BootstrapDateRangePicker extends CInputWidget
 
 	protected function registerBootstrapDateRangePicker()
 	{
+		/** @var CClientScript $clientScript */
 		$clientScript = Yii::app()->getClientScript();
+
 		$callback = CJavaScript::encode($this->callback);
 		$selector = CJavaScript::encode($this->selector);
 		$options = CJavaScript::encode($this->options);
@@ -56,7 +57,7 @@ class BootstrapDateRangePicker extends CInputWidget
 			->addPackage(self::BDRP_PACKAGE_ID, [
 					'baseUrl' => $assetsUrl,
 					'js' => ['daterangepicker.js'],
-					'css' => ['daterangepicker-' . $this->theme . '.css'],
+					'css' => ['daterangepicker.css'],
 					'depends' => ['jquery', 'moment']]
 			)
 			->registerPackage(self::BDRP_PACKAGE_ID)
